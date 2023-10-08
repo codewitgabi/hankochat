@@ -1,10 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{js,html}"
+    "./src/**/*.{js,html,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      container: {
+        center: true
+      },
+      colors: {
+        "bigStone": "#141D30",
+        "cadetBlue": "#AEB7C7",
+        "lynch": "#69829D",
+      },
+      fontFamily: {
+        "kanit": ["Kanit", "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }
