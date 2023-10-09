@@ -22,7 +22,7 @@ function Service() {
           There are currently two available modes for chatting with other users; <b><em>Anonymous</em></b> and <b><em>Actual User</em></b>. Which ever one you choose, there is a lot of privacy for you.
         </p>
 
-        <CTA text={ "Get Started" } path="/login" />
+        <CTA text={ "Get Started" } path="/auth" />
       </div>
     </div>
   );
