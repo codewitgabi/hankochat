@@ -21,4 +21,10 @@
   small {
     @apply text-xs;
   }
+  .accordion {
+    @apply bg-blue-950/10 shadow-lg cursor-pointer p-[18px] w-full text-left border-none outline-none transition duration-300 hover:bg-blue-950/20 mt-2;
+  }
+  .accordion-panel {
+    @apply px-[18px] bg-blue-900/20 p-2 overflow-hidden;
+  }
 }

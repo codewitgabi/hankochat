@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
 import Error404Page from "./pages/404Error";
+import AuthPage from "./pages/HankoAuth";
 
 
 function App() {
@@ -12,6 +13,10 @@ function App() {
       <Route
         path="/"
         element={ <LandingPage /> }
+      />
+      <Route
+        path="/auth"
+        element={ <AuthPage /> }
       />
       <Route
         path="*"
