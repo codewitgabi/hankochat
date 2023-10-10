@@ -9,22 +9,58 @@
   body {
     @apply bg-bigStone text-cadetBlue font-kanit;
   }
+
   h1 {
     @apply text-2xl font-black;
   }
+
   h2 {
     @apply text-xl font-bold;
   }
+
   p {
     @apply text-sm;
   }
+
   small {
     @apply text-xs;
   }
+
   .accordion {
     @apply bg-blue-950/10 shadow-lg cursor-pointer p-[18px] w-full text-left border-none outline-none transition duration-300 hover:bg-blue-950/20 mt-2;
   }
+
   .accordion-panel {
     @apply px-[18px] bg-blue-900/20 p-2 overflow-hidden;
+  }
+
+  hanko-auth::part(container) {
+    @apply bg-blue-950/20 p-8 rounded shadow-lg;
+  }
+
+  hanko-auth::part(headline1) {
+    @apply text-2xl text-cadetBlue font-bold font-kanit mb-8;
+  }
+
+  hanko-auth::part(paragraph) {
+    @apply text-cadetBlue;
+  }
+
+  hanko-auth::part(text-input) {
+    @apply w-full p-5 text-center;
+  }
+
+  hanko-auth::part(button) {
+    padding: 20px 15px;
+    @apply flex items-center justify-center uppercase w-full bg-bigStone font-kanit text-cadetBlue hover:ring hover:ring-teal-300;
+  }
+
+  hanko-auth::part(secondary-button) {
+    @apply mt-6 text-cadetBlue font-kanit tracking-wider;
+  }
+
+  hanko-auth::part(divider-line),
+  hanko-auth::part(divider-text) {
+    @apply mt-9;
   }
 }
