@@ -29,7 +29,7 @@ function LogoutBtn() {
       onClick={logout}
       className="px-5 py-3 hover:ring hover:ring-teal-300 border transition duration-300">
       Logout
-    </button>;
+    </button>
   );
 }
 
