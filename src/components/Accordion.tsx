@@ -6,7 +6,6 @@ function Accordion({ label, content }: AccordionProps) {
   const [active, setActive] = useState<boolean>(false);
 
 
-
   return (
     <>
       <button className="accordion" onClick={ () => setActive(!active) }>{ label }</button>

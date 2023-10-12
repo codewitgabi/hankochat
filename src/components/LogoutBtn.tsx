@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
 import { Hanko } from "@teamhanko/hanko-elements";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-function LogoutBtn() {
+function LogoutBtn({ setUser }: any) {
   const navigate = useNavigate();
   const [hanko, setHanko] = useState<Hanko>();
 
@@ -18,6 +19,7 @@ function LogoutBtn() {
   const logout = async () => {
     try {
       await hanko?.user.logout();
+      setUser(null);
       navigate("/");
     } catch (error) {
       console.error("Error during logout:", error);
@@ -25,11 +27,11 @@ function LogoutBtn() {
   };
 
   return (
-    <button
+    <ArrowRightOnRectangleIcon
       onClick={logout}
-      className="px-5 py-3 hover:ring hover:ring-teal-300 border transition duration-300">
+      className="h-6 w-6 hover:text-teal-300 transition duration-300">
       Logout
-    </button>
+    </ArrowRightOnRectangleIcon>
   );
 }
 

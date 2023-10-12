@@ -3,11 +3,12 @@ import TopNavBar from "../components/NavBar";
 import { Hanko } from "@teamhanko/hanko-elements";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthProps } from "../types/Props";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-function CompleteProfile() {
+function CompleteProfile({ user, setUser, session }: AuthProps) {
   const hanko = useMemo(() => new Hanko(hankoApi), []);
   const navigate = useNavigate();
 
@@ -15,8 +16,6 @@ function CompleteProfile() {
     e.preventDefault();
 
     const user = await hanko.user.getCurrent();
-    //const user = { email: "codewitgabi@mail.com", _id: 123 };
-    console.log(user)
 
     axios.post(
     "http://localhost:3000/auth/create-user", {
@@ -34,7 +33,7 @@ function CompleteProfile() {
 
   return (
     <>
-      <TopNavBar />
+      <TopNavBar user={ user } setUser={ setUser } session={ session } />
     <div className="container bg-blue-950/10 shadow-lg p-8 mt-9">
       <h2 className="mb-5">Complete Profile</h2>
       <form method="post" className="" onSubmit={ handleSubmit }>

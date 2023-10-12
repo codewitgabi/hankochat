@@ -1,30 +1,27 @@
 import {
   useEffect,
   useCallback,
-  useMemo
+  useMemo,
+  useReducer
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { register, Hanko } from "@teamhanko/hanko-elements";
 import axios from "axios";
+import reducer, { initState } from "../reducer";
+import { AuthProps } from "../types/Props";
 
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-function HankoAuth() {
+function HankoAuth({ user, setUser, session }: AuthProps) {
   const navigate = useNavigate();
   const hanko = useMemo(() => new Hanko(hankoApi), []);
 
   const redirectAfterLogin = useCallback(async () => {
     // add user to backend user
 
-    const user = await hanko.user.getCurrent();
-    const session = hanko.session.get();
-
-    console.log("Session => " , session);
-    console.log("User => ", user);
-
-    axios.get(`http://localhost:3000/auth/isUser/${user.id}`)
+    axios.get(`http://localhost:3000/auth/isUser/${user?.id}`)
     .then((response) => {
       if (!response.data.isUser) {
         navigate("/complete-profile");
@@ -40,9 +37,18 @@ function HankoAuth() {
 
   useEffect(() => {
     hanko.onAuthFlowCompleted(() => {
-      redirectAfterLogin();
+    if (hanko.session.isValid()) {
+      axios.get(`http://localhost:3000/auth/getUser/${session?.userID}`)
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => {
+        setUser(null);
+      })
+    }
+    redirectAfterLogin();
     })
-  }, [hanko, redirectAfterLogin]);
+  }, [hanko, redirectAfterLogin, user]);
 
   useEffect(() => {
     register(hankoApi).catch((error) => {
