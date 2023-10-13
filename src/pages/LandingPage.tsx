@@ -8,7 +8,7 @@ import { AuthProps } from "../types/Props";
 function LandingPage({ user, setUser, session }: AuthProps) {
   return (
     <>
-      <NavBar user={ user } session={ session } setUser={ setUser } />
+      <NavBar user={ user } />
       <Service />
       <FAQ />
       <Footer />

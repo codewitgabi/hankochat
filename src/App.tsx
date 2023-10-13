@@ -32,7 +32,7 @@ const getUser = async (session: Session, setUser: React.Dispatch<React.SetStateA
 }
 
 function App() {
-  const hanko = useMemo(() => new Hanko(hankoApi));
+  const hanko = useMemo(() => new Hanko(hankoApi), []);
   const session = hanko.session.get();
   const [user, setUser] = useState<UserOrNull>(null);
 
@@ -54,7 +54,7 @@ function App() {
       />
       <Route
         path="/complete-profile"
-        element={ <CompleteProfile user={ user } /> }
+        element={ <CompleteProfile user={ user } setUser={ setUser } session={ session } /> }
       />
       <Route
         path="/chat"

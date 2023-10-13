@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import TopNavBar from "../components/NavBar";
 import { Hanko } from "@teamhanko/hanko-elements";
@@ -13,20 +14,22 @@ function CompleteProfile({ user, setUser, session }: AuthProps) {
   const hanko = useMemo(() => new Hanko(hankoApi), []);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
 
     const user = await hanko.user.getCurrent();
 
     try {
-      const res = await axios.post(`${SERVER_URL}/auth/create-user`, {
+      await axios.post(`${SERVER_URL}/auth/create-user`, {
         _id: user.id,
         email: user.email,
         username: e.target.username.value,
       })
       navigate("/chat");
     } catch(err) {
-      alert(err.message);
+      if (err instanceof Error) {
+        alert(err.message);
+      }
     }
   };
 

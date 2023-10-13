@@ -7,7 +7,7 @@ import { UserOrNull } from "../types/Props";
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-function LogoutBtn({ setUser }: { setUser: React.Dispatch<React.SetActionState<UserOrNull>>}) {
+function LogoutBtn({ setUser }: { setUser: React.Dispatch<React.SetStateAction<UserOrNull>>}) {
   const navigate = useNavigate();
   const [hanko, setHanko] = useState<Hanko>();
 

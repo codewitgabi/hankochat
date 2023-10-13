@@ -2,7 +2,6 @@ import React, {
   useEffect,
   useCallback,
   useMemo,
-  useReducer
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { register, Hanko } from "@teamhanko/hanko-elements";
