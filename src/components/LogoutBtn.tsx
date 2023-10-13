@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
 import { Hanko } from "@teamhanko/hanko-elements";
+import { UserOrNull } from "../types/Props";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-function LogoutBtn({ setUser }: any) {
+function LogoutBtn({ setUser }: { setUser: React.Dispatch<React.SetActionState<UserOrNull>>}) {
   const navigate = useNavigate();
   const [hanko, setHanko] = useState<Hanko>();
 

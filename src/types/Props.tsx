@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface CTAProps {
   text: string;
   path: string;
@@ -15,6 +17,8 @@ export interface User {
   image: string;
 }
 
+export type UserOrNull = User | null;
+
 export interface Session {
   userID: string;
   jwt: string;
@@ -22,8 +26,8 @@ export interface Session {
 }
 
 export interface AuthProps {
-  user: User;
-  setUser: any;
+  user: UserOrNull;
+  setUser: React.Dispatch<React.SetStateAction<UserOrNull>>;
   session: Session;
 }
 
