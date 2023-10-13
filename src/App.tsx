@@ -46,7 +46,7 @@ function App() {
     <Routes>
       <Route
         path="/"
-        element={ <LandingPage user={ user } session={ session } setUser={ setUser } /> }
+        element={ <LandingPage user={ user } /> }
       />
       <Route
         path="/auth"

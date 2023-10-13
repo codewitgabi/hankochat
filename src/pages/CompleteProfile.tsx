@@ -14,16 +14,19 @@ function CompleteProfile({ user, setUser, session }: AuthProps) {
   const hanko = useMemo(() => new Hanko(hankoApi), []);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     const user = await hanko.user.getCurrent();
+    const target = e.target as typeof e.target & {
+      username: { value: string }
+    }
 
     try {
       await axios.post(`${SERVER_URL}/auth/create-user`, {
-        _id: user.id,
-        email: user.email,
-        username: e.target.username.value,
+        _id: user?.id,
+        email: user?.email,
+        username: target?.username?.value,
       })
       navigate("/chat");
     } catch(err) {
@@ -38,7 +41,7 @@ function CompleteProfile({ user, setUser, session }: AuthProps) {
       <TopNavBar user={ user } setUser={ setUser } session={ session } />
     <div className="container bg-blue-950/10 shadow-lg p-8 mt-9">
       <h2 className="mb-5">Complete Profile</h2>
-      <form method="post" className="" onSubmit={ handleSubmit }>
+      <form method="post" action="/" onSubmit={ handleSubmit }>
         <input
           type="text"
           name="username"

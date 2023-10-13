@@ -23,7 +23,7 @@ function HankoAuth({ user, setUser }: { user: UserOrNull, setUser: React.Dispatc
     // add user to backend user
 
     try {
-      const response = axios.get(`${SERVER_URL}/auth/isUser/${user?.id}`)
+      const response = await axios.get(`${SERVER_URL}/auth/isUser/${user?.id}`)
 
       if (response.statusText === "OK") {
         if (!response.data.isUser) {

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 //import Avatar from "../assets/AvatarUnknown.jpg";
 import { UserOrNull } from "../types/Props";
