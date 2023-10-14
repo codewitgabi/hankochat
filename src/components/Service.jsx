@@ -1,5 +1,5 @@
-import AvatarUnknown from "../assets/AvatarUnknown.jpg";
 import CTA from "../components/CTA";
+import AvatarUnknown from "../assets/AvatarUnknown.jpg";
 
 
 function Service() {

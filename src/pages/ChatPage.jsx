@@ -2,10 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TopNavBar from "../components/NavBar";
 import BottomNav from "../components/BottomNav";
-import { AuthProps } from "../types/Props";
 
 
-function ChatPage({ user, setUser, session }: AuthProps) {
+function ChatPage({ user, setUser, session }) {
 
   const navigate = useNavigate();
 

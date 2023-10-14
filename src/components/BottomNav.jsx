@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutBtn";
 
 
-function BottomNav({ setUser }: any) {
+function BottomNav({ setUser }) {
   return (
     <nav className="container fixed bottom-0 left-0 w-full flex justify-between py-5 px-8 bg-blue-950/10 shadow-lg">
       <Link to="/" className="hover:text-teal-300 transition duration-300">

@@ -1,14 +1,15 @@
+import React from "react";
 import axios from "axios";
 import TopNavBar from "../components/NavBar";
 import { Hanko } from "@teamhanko/hanko-elements";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthProps } from "../types/Props";
+import { SERVER_URL } from "../utils";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-function CompleteProfile({ user, setUser, session }: AuthProps) {
+function CompleteProfile({ user, setUser, session }) {
   const hanko = useMemo(() => new Hanko(hankoApi), []);
   const navigate = useNavigate();
 
@@ -17,18 +18,16 @@ function CompleteProfile({ user, setUser, session }: AuthProps) {
 
     const user = await hanko.user.getCurrent();
 
-    axios.post(
-    "http://localhost:3000/auth/create-user", {
-      _id: user.id,
-      email: user.email,
-      username: e.target.username.value,
-    })
-    .then(() => {
+    try {
+      await axios.post(`${SERVER_URL}/auth/create-user`, {
+        _id: user?.id,
+        email: user?.email,
+        username: e.target?.username?.value,
+      })
       navigate("/chat");
-    })
-    .catch((err) => {
+    } catch(err) {
       alert(err.message);
-    })
+    }
   };
 
   return (
@@ -36,7 +35,7 @@ function CompleteProfile({ user, setUser, session }: AuthProps) {
       <TopNavBar user={ user } setUser={ setUser } session={ session } />
     <div className="container bg-blue-950/10 shadow-lg p-8 mt-9">
       <h2 className="mb-5">Complete Profile</h2>
-      <form method="post" className="" onSubmit={ handleSubmit }>
+      <form method="post" action="/" onSubmit={ handleSubmit }>
         <input
           type="text"
           name="username"

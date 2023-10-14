@@ -1,10 +1,8 @@
-import { AccordionProps } from "../types/Props";
 import { useState } from "react";
 
 
-function Accordion({ label, content }: AccordionProps) {
-  const [active, setActive] = useState<boolean>(false);
-
+function Accordion({ label, content }) {
+  const [active, setActive] = useState(false);
 
   return (
     <>

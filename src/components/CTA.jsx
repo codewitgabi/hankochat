@@ -1,8 +1,7 @@
-import { CTAProps } from "../types/Props";
 import { Link } from "react-router-dom";
 
 
-function CTA({ text, path = "/" }: CTAProps) {
+function CTA({ text, path = "/" }) {
   return (
     <Link
       to={ path }
