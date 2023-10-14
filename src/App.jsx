@@ -6,8 +6,6 @@ import React, {
 import { Routes, Route } from "react-router-dom";
 import { Hanko } from "@teamhanko/hanko-elements";
 import axios from "axios";
-import { UserOrNull, Session } from "./types/Props";
-// import reducer, { initState } from "./reducer";
 
 // pages
 
@@ -22,7 +20,7 @@ import { SERVER_URL } from "./utils";
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-const getUser = async (session: Session, setUser: React.Dispatch<React.SetStateAction<UserOrNull>>) => {
+const getUser = async (session, setUser) => {
   try {
     const res = await axios.get(`${SERVER_URL}/auth/getUser/${session.userID}`)
     setUser({ ...res.data, id: session.userID })
@@ -34,7 +32,7 @@ const getUser = async (session: Session, setUser: React.Dispatch<React.SetStateA
 function App() {
   const hanko = useMemo(() => new Hanko(hankoApi), []);
   const session = hanko.session.get();
-  const [user, setUser] = useState<UserOrNull>(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     if (hanko.session.isValid()) {

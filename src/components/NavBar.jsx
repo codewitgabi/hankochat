@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
-//import Avatar from "../assets/AvatarUnknown.jpg";
-import { UserOrNull } from "../types/Props";
 import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/outline";
-//import LogoutButton from "./LogoutBtn";
 
 
-function NavBar({ user }: { user: UserOrNull }) {
+function NavBar({ user }) {
   return (
     <header className="container bg-blue-950/10 shadow-lg px-8 py-5">
       <nav className="flex justify-between items-center">

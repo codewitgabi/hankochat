@@ -1,5 +1,5 @@
 import Accordion from "./Accordion";
-import FAQS from "../FAQs.ts";
+import FAQS from "../FAQs";
 
 
 function FAQ() {

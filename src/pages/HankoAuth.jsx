@@ -6,15 +6,13 @@ import React, {
 import { useNavigate } from "react-router-dom";
 import { register, Hanko } from "@teamhanko/hanko-elements";
 import axios from "axios";
-//import reducer, { initState } from "../reducer";
-import { UserOrNull } from "../types/Props";
 import { SERVER_URL } from "../utils";
 
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-function HankoAuth({ user, setUser }: { user: UserOrNull, setUser: React.Dispatch<React.SetStateAction<UserOrNull>>}) {
+function HankoAuth({ user, setUser }) {
   const navigate = useNavigate();
   const hanko = useMemo(() => new Hanko(hankoApi), []);
   const session = hanko.session.get();

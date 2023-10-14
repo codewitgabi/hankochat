@@ -4,35 +4,29 @@ import TopNavBar from "../components/NavBar";
 import { Hanko } from "@teamhanko/hanko-elements";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthProps } from "../types/Props";
 import { SERVER_URL } from "../utils";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 
-function CompleteProfile({ user, setUser, session }: AuthProps) {
+function CompleteProfile({ user, setUser, session }) {
   const hanko = useMemo(() => new Hanko(hankoApi), []);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const user = await hanko.user.getCurrent();
-    const target = e.target as typeof e.target & {
-      username: { value: string }
-    }
 
     try {
       await axios.post(`${SERVER_URL}/auth/create-user`, {
         _id: user?.id,
         email: user?.email,
-        username: target?.username?.value,
+        username: e.target?.username?.value,
       })
       navigate("/chat");
     } catch(err) {
-      if (err instanceof Error) {
-        alert(err.message);
-      }
+      alert(err.message);
     }
   };
 
