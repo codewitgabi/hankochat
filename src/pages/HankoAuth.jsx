@@ -15,13 +15,13 @@ const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 function HankoAuth({ user, setUser }) {
   const navigate = useNavigate();
   const hanko = useMemo(() => new Hanko(hankoApi), []);
-  const session = hanko.session.get();
+  let session;
 
   const redirectAfterLogin = useCallback(async () => {
     // add user to backend user
 
     try {
-      const response = await axios.get(`${SERVER_URL}/auth/isUser/${user?.id}`)
+      const response = await axios.get(`${SERVER_URL}/auth/isUser/${session?.userID}`)
 
       if (response.statusText === "OK") {
         if (!response.data.isUser) {
@@ -37,16 +37,17 @@ function HankoAuth({ user, setUser }) {
   }, [navigate]);
 
   useEffect(() => {
-    if (session) {
+    if (user) {
       navigate("/")
     }
   });
 
   useEffect(() => {
     hanko.onAuthFlowCompleted(async () => {
-    if (hanko.session.isValid()) {
-      if (session) {
-        console.log(session.userID)
+      if (hanko.session.isValid()) {
+        session = hanko.session.get();
+        console.log(session);
+        console.log(session?.userID);
         try {
           const response = await axios.get(`${SERVER_URL}/auth/getUser/${session?.userID}`)
       
@@ -55,13 +56,11 @@ function HankoAuth({ user, setUser }) {
           }
         } catch (e) {
          setUser(null);
-        } finally {
-          redirectAfterLogin();
         }
       }
-    }
+      redirectAfterLogin();
     })
-  }, [hanko, redirectAfterLogin, user]);
+  });
 
   useEffect(() => {
     register(hankoApi).catch((error) => {
