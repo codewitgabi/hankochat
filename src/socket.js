@@ -24,7 +24,7 @@ socket.on("connect", () => {
 })
 
 
-socket.on("connect_error", (e) => alert(e.message + "\nReload the page"))
+socket.on("connect_error", (e) => console.log(e.message + "\nReload the page"))
 
 
 function getUser() {
