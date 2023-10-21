@@ -22,10 +22,13 @@ const hankoApi = import.meta.env.VITE_HANKO_API_URL;
 
 const getUser = async (session, setUser) => {
   console.log(session)
+  let exp = new Date();
+
   try {
     const res = await axios.get(`${SERVER_URL}/auth/getUser/${session.userID}`)
     setUser({ ...res.data, id: session.userID })
-    localStorage.setItem("hankochat_user", JSON.stringify({ ...res.data, id: session.userID, jwt: session?.jwt }))
+    exp.setSeconds(exp.getSeconds() + session?.expirationSeconds);
+    localStorage.setItem("hankochat_user", JSON.stringify({ ...res.data, id: session.userID, jwt: session?.jwt, expiryTime: exp }))
   } catch (e) {
     console.log(e)
   }
