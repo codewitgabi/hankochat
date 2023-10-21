@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
+import NavBar from "../components/NavBar";
 import { socket } from "../socket";
 
 
@@ -9,6 +10,7 @@ function ChatMainScreen({ user, receiver, setReceiver }) {
 
   useEffect(() => {
     if (!user) {
+      socket?.disconnect();
       navigate("/");
     }
   });
@@ -19,7 +21,10 @@ function ChatMainScreen({ user, receiver, setReceiver }) {
   }, [receiver])
 
   return (
-    <MessageBox receiverID={ receiver }  />
+    <>
+      <NavBar user={ user } />
+      <MessageBox receiverID={ receiver }  />
+    </>
   );
 }
 

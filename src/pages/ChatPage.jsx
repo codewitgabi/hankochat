@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ColorRing } from "react-loader-spinner";
 import TopNavBar from "../components/NavBar";
 import BottomNav from "../components/BottomNav";
 import UserBox from "../components/UserBox";
@@ -39,8 +40,9 @@ function ChatPage({ user, setUser, session }) {
       />
 
       {
-        users &&
-        users.map((user) => <UserBox key={ user.id } user={ user } />)
+        users ?
+        users.map((user) => <UserBox key={ user.id } user={ user } />) :
+        <ColorRing />
       }
 
       <BottomNav setUser={ setUser } />
