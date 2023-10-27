@@ -1,0 +1,48 @@
+{
+  "name": "hankochat-backend",
+  "version": "1.0.0",
+  "description": "A realtime chat application for hanko.io hackathon",
+  "main": "./src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/app.js",
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codewitgabi/hankochat-backend.git"
+  },
+  "keywords": [
+    "chat",
+    "hanko",
+    "socket",
+    "express"
+  ],
+  "author": "Gabriel Michael Ojomakpene (codewitgabi)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codewitgabi/hankochat-backend/issues"
+  },
+  "homepage": "https://github.com/codewitgabi/hankochat-backend#readme",
+  "dependencies": {
+    "cloudinary": "^1.41.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-jwt": "^8.4.1",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0",
+    "mongoose": "^7.5.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "socket.io": "^4.7.2",
+    "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

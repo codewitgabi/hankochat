@@ -2,12 +2,13 @@ import { MicrophoneIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { socket } from "../socket";
 
 
-function MessageBox({ receiverID }) {
+function MessageBox({ receiverID, setMessages }) {
+  console.log(receiverID)
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const message = e.target.textMessage.value;
-    socket.emit("send_message", socket.id, receiverID, message);
+    socket?.emit("send_message", socket?.id, receiverID, message);
 
     e.target.reset();
   };
