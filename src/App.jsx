@@ -15,9 +15,9 @@ import AuthPage from "./pages/HankoAuth";
 import CompleteProfile from "./pages/CompleteProfile";
 import ChatPage from "./pages/ChatPage";
 import ChatMainScreen from "./pages/ChatMainScreen";
-import { SERVER_URL } from "./utils";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 
 const getUser = async (session, setUser) => {

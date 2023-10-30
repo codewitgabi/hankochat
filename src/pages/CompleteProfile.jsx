@@ -4,9 +4,9 @@ import TopNavBar from "../components/NavBar";
 import { Hanko } from "@teamhanko/hanko-elements";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { SERVER_URL } from "../utils";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 
 function CompleteProfile({ user, setUser, session }) {
