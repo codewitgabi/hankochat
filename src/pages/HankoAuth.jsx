@@ -6,10 +6,10 @@ import React, {
 import { useNavigate } from "react-router-dom";
 import { register, Hanko } from "@teamhanko/hanko-elements";
 import axios from "axios";
-import { SERVER_URL } from "../utils";
 
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 
 function HankoAuth({ user, setUser }) {
