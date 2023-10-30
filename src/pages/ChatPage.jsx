@@ -5,7 +5,10 @@ import { ColorRing } from "react-loader-spinner";
 import TopNavBar from "../components/NavBar";
 import BottomNav from "../components/BottomNav";
 import UserBox from "../components/UserBox";
-import { SERVER_URL } from "../utils";
+import { SERVER_URL } from "../utils"
+
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 
 function ChatPage({ user, setUser, session }) {
