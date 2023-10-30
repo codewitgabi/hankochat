@@ -1,5 +1,7 @@
 import { io } from "socket.io-client";
-import { SERVER_URL } from "./utils.js";
+
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 
 const SOCKET_URL = import.meta.env.NODE_ENV = "production" ? SERVER_URL : "http://localhost:3000";
